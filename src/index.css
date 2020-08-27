@@ -1,13 +1,371 @@
 body {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.categoryItem {
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+  border-radius: 10%;
+  background: #46e6fc radial-gradient(circle, #46e6fc 17%, #46e6fc 48%, #3f5efb 100%);
+  transition-duration: 0.5s;
 }
+.categoryItem:hover {
+  will-change: transform;
+  text-decoration: none;
+  transform: scale(1.03);
+  transition-duration: 0.5s;
+  background: white;
+  box-shadow: 0px 0px 50px 15px rgba(0, 224, 253, 0.75);
+}
+.categoryItem div h4 {
+  text-align: center;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: black;
+  height: 2em;
+}
+.categoryItem img {
+  width: 90%;
+  margin: 1em;
+  margin-top: 0;
+  border-radius: 10%;
+}
+.categoryItem button {
+  margin-bottom: 1em;
+  background-color: #6efbf8;
+  color: black;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  border: none;
+  border-radius: 15px;
+}
+.categoryItem button:hover {
+  box-shadow: 0px 0px 50px 15px rgba(0, 224, 253, 0.75);
+}
+.categoryItem button a {
+  text-decoration: none;
+}
+
+.productConf-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 10rem;
+  justify-items: center;
+}
+@media (max-width: 1000px) {
+  .productConf-wrapper {
+    grid-gap: 3em;
+  }
+}
+
+.categoryList-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 3rem;
+  justify-items: center;
+}
+
+.productList-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-gap: 2em;
+  justify-items: center;
+}
+
+.pizzaItem {
+  border-radius: 4%;
+  max-width: 340px;
+  box-shadow: 0px 6px 5px 4px rgba(0, 0, 0, 0.2);
+}
+.pizzaItem h3 {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+}
+.pizzaItem img {
+  min-height: 346px;
+}
+.pizzaItem .product_btn {
+  border-radius: 15%;
+  border: solid 1px blue;
+  background-color: #e4df6d;
+  width: 25%;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  color: rgba(0, 0, 0, 0.5);
+}
+.pizzaItem .pizzaDescription p {
+  color: grey;
+  font-family: "Courier New";
+  overflow: hidden;
+  height: 64px;
+  line-height: 16px;
+  position: relative;
+  word-wrap: break-word;
+  min-height: 48px;
+}
+.pizzaItem .pizzaDescription p:after {
+  content: "...";
+  position: absolute;
+  right: auto;
+  bottom: auto;
+}
+
+.product_conf {
+  min-width: 450px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0px 6px 6px 6px rgba(0, 0, 0, 0.2);
+}
+.product_conf label {
+  margin: 1em 1em 0;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+}
+.product_conf p#photo_sign {
+  margin: 1em 1em 0;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+}
+.product_conf label.photoLabel {
+  text-transform: uppercase;
+  width: 40%;
+  background-color: yellow;
+  text-align: center;
+  margin-top: 0;
+  cursor: pointer;
+}
+.product_conf textarea {
+  margin: 0 1em;
+}
+.product_conf input {
+  margin: 0 1em;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+}
+.product_conf input[type=file] {
+  display: none;
+}
+
+.Create_product_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  min-width: 350px;
+  max-width: 500px;
+  background: #ee5bf3;
+  box-shadow: 0px 0px 50px 15px rgba(204, 70, 252, 0.75);
+  border-radius: 4%;
+  color: white;
+}
+.Create_product_form label {
+  font-family: Consolas;
+  align-self: start;
+  margin-left: 1.5em;
+}
+.Create_product_form input {
+  width: 90%;
+  margin: 0;
+}
+.Create_product_form textarea {
+  width: 90%;
+}
+
+.Create_category_form {
+  display: flex;
+  flex-direction: column;
+}
+.Create_category_form .input_with_error {
+  border: 1px solid red;
+}
+.Create_category_form .input_without_errors {
+  border: 1px solid green;
+}
+.Create_category_form .create_category_btn {
+  margin-top: 1em;
+  border: solid 1px blue;
+  background-color: #e4df6d;
+  width: 100%;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  align-self: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.Create_category_form .Create_product_error_sign {
+  display: none;
+}
+.Create_category_form .Create_product_error_sign.active {
+  display: block;
+}
+.Create_category_form input {
+  margin: 0;
+  margin-bottom: 1em;
+}
+.Create_category_form input[type=file] {
+  display: none;
+}
+.Create_category_form label {
+  margin: 0;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+}
+.Create_category_form label#file_label {
+  background-color: black;
+  text-transform: uppercase;
+  width: auto;
+  background-color: yellow;
+  text-align: center;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.CategoryDropDown {
+  margin: 0 1em;
+  padding: 0;
+  width: 90%;
+}
+.CategoryDropDown .CategoryDropDownListItem {
+  text-align: center;
+  background: #6efbf8;
+  margin-bottom: 1em;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 20px;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  color: black;
+  transition-duration: 0.5s;
+}
+.CategoryDropDown .CategoryDropDownListItem:hover {
+  transform: scale(1.05);
+  transition-duration: 0.5s;
+  background-color: white;
+  box-shadow: 0px 0px 50px 15px rgba(0, 224, 253, 0.75);
+}
+.CategoryDropDown .CategoryDropDownListItem p {
+  margin: 0;
+}
+
+.NavList {
+  background-color: black;
+  box-shadow: 0px 6px 6px 6px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+@media (max-width: 1199px) {
+  .NavList {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.NavList li {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  color: black;
+  width: auto;
+}
+.NavList a {
+  display: flex;
+  border-radius: 30px;
+  justify-content: center;
+  margin: 0.5em;
+  background: #6efbf8;
+  width: 50%;
+  min-width: max-content;
+  box-shadow: 0px 0px 5px 5px rgba(70, 230, 252, 0.6);
+  transition-duration: 0.4s;
+}
+.NavList a:hover {
+  text-decoration: none;
+  transform: scale(1.03);
+  transition-duration: 0.4s;
+  box-shadow: 0px 0px 10px 10px rgba(70, 230, 252, 0.6);
+}
+
+.Update_Category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: #a14aff;
+  background: radial-gradient(circle, #a14aff 13%, #cc46fc 46%, rgba(167, 33, 135, 0.8) 100%);
+  box-shadow: 0px 0px 50px 15px rgba(204, 70, 252, 0.75);
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px;
+}
+.Update_Category div.CategoryDropDown {
+  margin-top: 1em;
+}
+.Update_Category label {
+  margin: 1em;
+  border-radius: 20px;
+  width: 90%;
+  background: #6efbf8;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+.Update_Category label:hover {
+  transform: scale(1.02);
+  background-color: white;
+  transition-duration: 0.25s;
+}
+.Update_Category input[type=file] {
+  display: none;
+}
+.Update_Category button {
+  margin: 1em;
+  width: 90%;
+}
+.Update_Category button.deleteBtn {
+  border: 1px solid red;
+  color: red;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.Update_Category button.updateBtn {
+  border: 1px solid green;
+  color: green;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar {
+  width: 100%;
+  margin-bottom: 5em;
+  background-color: black;
+}
+.navbar .navbar-toggler {
+  background: #6efbf8;
+  transition-duration: 0.4s;
+}
+.navbar .navbar-toggler:hover {
+  background-color: white;
+  transform: scale(1.03);
+  transition-duration: 0.4s;
+  box-shadow: 0px 0px 10px 10px rgba(70, 230, 252, 0.6);
+}
+.navbar .navbar-toggler:focus {
+  outline: none;
+}
+
+.error_sign {
+  display: none;
+  color: red;
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  font-size: 0.8em;
+  max-width: 200px;
+}
+.error_sign.active {
+  display: block;
+}
+
+/*# sourceMappingURL=index.css.map */

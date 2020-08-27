@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './Components/App';
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.bundle.min"
+import {BrowserRouter} from "react-router-dom";
+import "./index.css";
+import { Auth0Provider } from '@auth0/auth0-react';
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Auth0Provider
+  domain="neistow.eu.auth0.com"
+  clientId="d6L4cb4NlNmSmnjCIM5VheCVEM1SX2v0"
+  redirectUri={window.location.origin}
+  audience="https://twopizzaproject.com"
+  >
+      <BrowserRouter>
+         <App />
+      </BrowserRouter>
+  </Auth0Provider>,
+  document.getElementById('root')!
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
